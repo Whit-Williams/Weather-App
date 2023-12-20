@@ -22,7 +22,7 @@ displayHistory();
 // function to search for cities using the OpenWeatherApp API that returns results
 function search(previousCity) {
   //targets input value in search box or history buttons
-  let city = previousCity || $("#search-input").val().toLowerCase();
+  let city = previousCity || $("#search-input").val();
 // fetching data from API and converting to json format
   const currDayURL = fetch(
     "https://api.openweathermap.org/data/2.5/weather?q=" +
