@@ -8,6 +8,8 @@ Following on from last week's lesson on server APIs, I have created a weather ap
 
 The task for this challenge was to build a weather app powered by the OpenWeatherMap API, that can take a city name as input and call the data for both the current day and a five day forecast for the searched city. Upon searching the city, it is also added to a history column as a button, that can be clicked to retrieve the weather information again.
 
+![Screenshot image of weather app](./images/Weather-Dashboard-Screenshot.png)
+
 #### [You can visit this page by clicking here.](https://whit-williams.github.io/Weather-App/)
 
 ### Technologies
