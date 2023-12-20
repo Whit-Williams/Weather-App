@@ -7,21 +7,11 @@
   font-family: "Outfit", sans-serif;
 }
 
-body {
-  background: rgba(104, 150, 236, 0.441);
-}
-
 .row {
-  background-color: rgba(245, 245, 245, 0.662);
+  background-color: rgba(217, 244, 129, 0.662);
   border-radius: 7px;
 }
 
-.invalid-entry {
-    color: rgb(167, 9, 9);
-    background: rgb(249, 169, 169);
-    padding: 5px;
-    margin-bottom: 2px;
-}
 #form-heading {
     padding-left: 16px;
     padding-top: 10px;

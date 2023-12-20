@@ -3,21 +3,22 @@ const APIKey = "ac8576af81b6ad181cf41fde50c3a105";
 let today = $("#today");
 let forecast = $("#forecast");
 
-function displayHistory () {
+function displayHistory() {
   $("#history").empty();
   let history = JSON.parse(localStorage.getItem("Cities")) || [];
-  for(let i = 0; i < history.length; i++){
-    let inputHistory = $("<button>").text(history[i]).attr("class", "history-btn");
-    $("#history").click(function(event){
-      console.log(event.target.innerText);
+  for (let i = 0; i < history.length; i++) {
+    let inputHistory = $("<button>")
+      .text(history[i])
+      .attr("class", "history-btn");
+    $("#history").click(function (event) {
       search(event.target.innerText);
     });
-        $("#history").prepend(inputHistory);
-  };
-};
+    $("#history").prepend(inputHistory);
+  }
+}
 displayHistory();
 
-function search (previousCity) {
+function search(previousCity) {
   let city = previousCity || $("#search-input").val();
 
   const currDayURL = fetch(
@@ -39,11 +40,10 @@ function search (previousCity) {
     if (!history.includes(city)) {
       history.push(city);
       displayHistory();
-      // let inputHistory = $("<button>").text(city).attr("class", "history-btn");
-      // $("#history").prepend(inputHistory);
       localStorage.setItem("Cities", JSON.stringify(history));
     };
-
+    let title = $("<h3>").text("Today's Weather");
+    let line = $("<hr>").attr("class", "hr weather-hr");
     let date = $("<div>").text(todaysDate.format(" DD MMMM YYYY"));
     let cityName = $("<div>").text(currDayURL.name);
     let iconId = currDayURL.weather[0].icon;
@@ -51,14 +51,14 @@ function search (previousCity) {
     let weatherIcon = $("<img>").attr("src", iconUrl);
     let temp = $("<div>").text(
       "Temp: " + Math.floor([currDayURL.main.temp - 273.15], 2) + " °C"
-    ); // CHECK HERE FOR ACCURACY
+    );
     let humidity = $("<div>").text(
       "Humidity: " + currDayURL.main.humidity + "%"
     );
     let wind = $("<div>").text("Wind: " + currDayURL.wind.speed + " KPH");
     today.empty();
     today.attr("class", "col-lg-12");
-    today.append(cityName, date, weatherIcon, temp, humidity, wind);
+    today.append(title, line, cityName, date, weatherIcon, temp, humidity, wind);
     forecast.empty();
     for (let i = 0; i < forecastURL.list.length; i++) {
       let showDay = forecastURL.list[i].dt_txt;
@@ -89,5 +89,3 @@ $("#search-button").on("click", function (event) {
   event.preventDefault();
   search();
 });
-
-// Here we are building the URL we need to query the database
